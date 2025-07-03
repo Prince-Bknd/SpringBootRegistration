@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 50px; 
+        }
+        .heading { 
+            color: #2c3e50; 
+        }
+        nav {
+            background: #2c3e50;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="heading">Welcome to this so called Application</h1>
+    <p>This is a normal Page redirecting to register and login page provided below.</p>
+    
+    <!-- Secondary navigation -->
+    <a th:href="@{/register}">Register</a> | 
+    <a th:href="@{/login}">Login</a>
+
+    <div>
+        <a th:href="@{/member-login}" class="button">Login for Member</a>
+    </div>
+
+</body>
+</html>

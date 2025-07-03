@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Department Dashboard</title>
+    <link href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+        .dashboard-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+        }
+        .heading {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+        .form-container {
+            margin-top: 40px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <a th:href="@{/logout}" class="logout-btn">Logout</a>
+
+    <div class="dashboard-container">
+        <h1 class="heading">Welcome, <span th:text="${department.name}">Department Name</span>!</h1>
+
+        <!-- Create Member Form -->
+        <div class="form-container">
+            <h3 class="mb-4">Create Member</h3>
+            <form th:action="@{/add-member}" th:method="post">
+                
+                <!-- Hidden department ID field -->
+                <input type="hidden" name="departmentId" th:value="${department.id}" />
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Member Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter member name" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Member Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter member email" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Member Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required />
+                </div>
+
+                <div th:if="${successMessage}" class="alert alert-success" role="alert">
+                    <span th:text="${successMessage}"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">Create Member</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

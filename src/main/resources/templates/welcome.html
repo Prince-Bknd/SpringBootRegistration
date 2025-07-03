@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome Page - Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .heading {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-container label {
+            display: block;
+            font-size: 14px;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+        .form-container input[type="text"], .form-container input[type="email"], .form-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            width: 100%;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+        .random-content {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .random-content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+	<a href="/logout" class="logout-btn">Logout</a>
+	
+    <div class="container">
+		<h1 class="heading">Admin's Dashboard</h1>
+
+		<div class="form-container">
+		    <div style="display: flex; justify-content: flex-end;">
+		        <a href="/manage-departments" class="manage-btn">Manage your Departments</a>
+		    </div>
+
+		    <h2>Add Department</h2>
+		    <form th:action="@{/add-department}" method="post">
+		        <input type="text" id="user-id" name="user-id" th:value="${session.user.id}" readonly style="display: none;"/>
+				<input type="text" id="user-email" name="user-email" th:value="${session.user.email}" readonly style="display: none;"/>
+				
+		        <label for="department-name">Department Name</label>
+		        <input type="text" id="department-name" name="department-name" placeholder="Enter department name" required>
+		        
+		        <label for="department-email">Department Email</label>
+		        <input type="email" id="department-email" name="department-email" placeholder="Enter department email" required>
+		        
+		        <label for="department-password">Department Password</label>
+		        <input type="password" id="department-password" name="department-password" placeholder="Enter department password" required>
+		        
+		        <button type="submit">Add Department</button>
+		    </form>
+		</div>
+
+
+        <!-- Random Content -->
+        <div class="random-content">
+            <h2>Some Random Content</h2>
+            <p>Welcome to the admin dashboard! This section allows you to add departments, manage users, and more. We hope you find everything you need to manage your organization efficiently.</p>
+            <p>Remember to always secure your sensitive data and keep your system updated. Regular maintenance is key to keeping your application secure and performant.</p>
+            <p>Feel free to explore more features and expand your management tools to meet the growing needs of your organization.</p>
+        </div>
+    </div>
+</body>
+</html>
