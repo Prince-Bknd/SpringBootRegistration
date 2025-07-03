@@ -1,0 +1,21 @@
+# Maven build output
+/target/
+
+# IntelliJ IDEA
+/.idea/
+/*.iml
+
+# Eclipse
+.classpath
+.project
+/.settings/
+
+# Logs
+*.log
+
+# Compiled class files
+*.class
+
+# JAR/WAR
+*.jar
+*.war
